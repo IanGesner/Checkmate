@@ -26,6 +26,7 @@ export class Piece {
     public get moveCount(): number {
         return this._moveCount;
     }
+    
     public incrementMoveCount(){
         this._moveCount++;
     }

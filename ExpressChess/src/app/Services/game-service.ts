@@ -1,6 +1,8 @@
 import { Type, Piece } from "../POTSOs/Piece";
 import { Color } from "../POTSOs/Color";
 import { Tile } from "../POTSOs/Tile";
+import { MoveValidatorFactory } from "../MoveValidation/MoveValidatorFactory";
+import { MoveValidator } from "../MoveValidation/MoveValidator";
 
 export class GameService {
 
@@ -82,7 +84,18 @@ export class GameService {
         ]
     }
 
+    private _selectedTile: Tile = null;
+    public get selectedTile(): Tile {
+        return this._selectedTile;
+    }
+    public set selectedTile(value: Tile) {
+        this._selectedTile = value;
+    }
+
     private _ownedColor: Color = Color.WHITE;
+    public set ownedColor(value: Color) {
+        this._ownedColor = value;
+    }
     public get ownedColor(): Color {
         return this._ownedColor;
     }
@@ -103,5 +116,13 @@ export class GameService {
     }
     public set board(value: Tile[][]) {
         this._board = value;
+    }
+
+    public movePiece(dest: Tile) {
+        // The MoveValidatorFactory.create() method will return a MoveValidator for the type of piece in the argument.
+        // It will return null if piece on the selected tile is
+        let validator = MoveValidatorFactory.create(this._selectedTile.piece); 
+
+        validator.isLegalMove(this._selectedTile, dest, this._ownedColor);
     }
 }

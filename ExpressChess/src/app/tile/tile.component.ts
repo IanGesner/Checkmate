@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { Piece } from '../POTSOs/Piece';
 import { Color } from '../POTSOs/Color';
 import { Tile } from '../POTSOs/Tile';
@@ -11,6 +11,9 @@ import { GameService } from '../Services/game-service';
   styleUrls: ['./tile.component.css']
 })
 export class TileComponent implements OnInit {
+  @ViewChild('tileDiv')
+  tileDiv: ElementRef;
+
   @Input()
   private _tile: Tile;
   public get tile(): Tile {
@@ -30,13 +33,27 @@ export class TileComponent implements OnInit {
 
   ngOnInit() { }
 
-  tileClicked() {
-    // if (this._gameService.selectedTile) {
-    //   this._gameService.movePiece(this._tile);
-    // }
-    // else {
-    //   this._gameService.selectedTile = this._tile;
-    // }
+  onTileClicked() {
+    console.log('in onTileClicked()');
+    if (this._gameService.selectedTile) {
+      this._gameService.movePiece(this._tile);
+    }
+    else if (this._tile.piece && this._tile.piece.color === this._gameService.ownedColor) {
+      this._gameService.selectedTile = this._tile;      
+    }
+    else {
+      this.invalidTileSelectionWarning();
+    }
+  }
+
+
+  private invalidTileSelectionWarning() {
+    console.log('invalidTileSelectionWarning()');
+    this._renderer.setStyle(this.tileDiv, 'border-color', 'red');
+    setTimeout(() => {
+
+    }, 1000);
+
   }
 
 }
