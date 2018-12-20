@@ -29,29 +29,43 @@ export class TileComponent implements OnInit {
     return this._color;
   }
 
-  constructor(private _gameService: GameService, private _renderer: Renderer2) { }
+  public tileWarning;
 
-  ngOnInit() { }
+  constructor(private _gameService: GameService) { 
+    console.log("in ctor");
+  }
+
+  ngOnInit() {
+    console.log("in onInit()");
+   }
 
   onTileClicked() {
     console.log('in onTileClicked()');
+
     if (this._gameService.selectedTile) {
+      console.log('moving piece to: ' + this._tile.coordinate.x + ' ' + this._tile.coordinate.x);
       this._gameService.movePiece(this._tile);
     }
     else if (this._tile.piece && this._tile.piece.color === this._gameService.ownedColor) {
+      console.log('selecting piece');
       this._gameService.selectedTile = this._tile;      
     }
     else {
+      console.log('invalid tile selection');
       this.invalidTileSelectionWarning();
     }
+  }
+
+  private getOutlineStyle(){
+    return this.tileWarning ? 'red' : 'black';
   }
 
 
   private invalidTileSelectionWarning() {
     console.log('invalidTileSelectionWarning()');
-    this._renderer.setStyle(this.tileDiv, 'border-color', 'red');
+    this.tileWarning = true;
     setTimeout(() => {
-
+      // this._outlineColor = 'black';
     }, 1000);
 
   }

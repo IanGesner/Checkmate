@@ -1,8 +1,8 @@
-<div [ngStyle]="{'background-color': tile.color == 0 ? '#999999' : '#CCCCCC'}" (click)="onTileClicked()" #tileDiv>
+<div [ngStyle]="{'background-color': tile.color == 0 ? '#999999' : '#CCCCCC'}" [style.outline-color]="'red'" (click)="onTileClicked()" #tileDiv>
   <p *ngIf="tile.piece !== null; else blank_paragraph" [ngStyle]="{'color': tile.piece?.color == 0 ? 'white' : 'black'}">
     {{ tile.piece?.type }} </p>
   <ng-template #blank_paragraph>
     <p> &nbsp; </p>
   </ng-template>
-  <p id="emptyParagraph">{{ tile.coordinate?.rank }}, {{ tile.coordinate?.file }}</p>
+  <p id="emptyParagraph">{{ tile.coordinate?.x }}, {{ tile.coordinate?.y }}</p>
 </div>
