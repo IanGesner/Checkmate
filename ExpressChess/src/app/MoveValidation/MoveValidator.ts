@@ -3,13 +3,22 @@ import { Color } from "../POTSOs/Color";
 import { Piece } from "../POTSOs/Piece";
 
 export abstract class MoveValidator {
-    constructor(source: Tile, dest: Tile, ownedColor: Color,  board: Tile[][]) {
+    constructor(source: Tile, dest: Tile, ownedColor: Color, board: Tile[][]) {
         this._piece = source.piece;
         this._source = source;
         this._dest = dest;
         this._ownedColor = ownedColor;
         this._proposedBoard = board; // The proposed new board, potentially not valid
         this._currentBoard = board;
+
+        if (this._dest) {
+            this._pieceCollidesWhite = this._dest.piece ? this._dest.piece.color === Color.WHITE : false;
+            this._pieceCollidesBlack = this._dest.piece ? this._dest.piece.color === Color.BLACK : false;
+        }
+        if (this._source) {
+            this._deltaX = this._source.coordinate.x - this._dest.coordinate.x; // deltaX will be positive when moving up the board and negative when moving down the board
+            this._deltaY = this._source.coordinate.y - this._dest.coordinate.y; // deltaY will be positive when moving left and negative when moving right
+        }
 
         dest.piece = source.piece;
         source.piece = null;
@@ -22,6 +31,12 @@ export abstract class MoveValidator {
     protected _source: Tile;
     protected _piece: Piece;
     protected _inCheck: boolean;
+    // If black, on first move, and moving tiles forward, return true
+    protected _pieceCollidesWhite;
+    protected _pieceCollidesBlack;
+
+    protected _deltaX;
+    protected _deltaY;
 
 
     protected abstract isCorrectMovePattern(): boolean;
@@ -29,7 +44,7 @@ export abstract class MoveValidator {
     protected abstract testCheckForPiece(myKingLoc: Tile, source: Tile): boolean;
 
     public isLegalMove(): boolean {
-        return this.isNotFriendlyCollision();
+        return this.isCorrectMovePattern();
     }
 
     private isNotFriendlyCollision(): boolean {

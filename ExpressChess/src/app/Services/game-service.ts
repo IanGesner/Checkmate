@@ -122,19 +122,18 @@ export class GameService {
     public movePiece(dest: Tile): boolean {
         // The MoveValidatorFactory.create() method will return a MoveValidator for the type of piece in the argument.
         // It will return null if piece on the selected tile is
-        //let validator = MoveValidatorFactory.create(this._selectedTile, dest, this._ownedColor, this.board); 
+        let validator = MoveValidatorFactory.create(this._selectedTile, dest, this._ownedColor, this.board);
 
-        // if (validator.isLegalMove()) {
-        //     console.log('legal move');
-        this._board[dest.coordinate.x][dest.coordinate.y].piece = this._selectedTile.piece;
-        console.log('moving ' + this._selectedTile.coordinate.x + ', ' + this._selectedTile.coordinate.y + ' to ' + dest.coordinate.x + ', ' + dest.coordinate.y);
-        this._selectedTile.piece = null;
-        this._selectedTile = null;
-        // }
-        // else {
-        //     this._selectedTile = null; 
-        //     return false;
-        // }
+        if (validator.isLegalMove()) {
+            this._board[dest.coordinate.x][dest.coordinate.y].piece = this._selectedTile.piece;
+            console.log('moving ' + this._selectedTile.coordinate.x + ', ' + this._selectedTile.coordinate.y + ' to ' + dest.coordinate.x + ', ' + dest.coordinate.y);
+            this._selectedTile.piece = null;
+            this._selectedTile = null;
+        }
+        else {
+            this._selectedTile = null;
+            return false;
+        }
         return true;
     }
 }
