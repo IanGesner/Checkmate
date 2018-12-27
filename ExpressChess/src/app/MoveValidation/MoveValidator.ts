@@ -16,12 +16,12 @@ export abstract class MoveValidator {
             this._pieceCollidesBlack = this._dest.piece ? this._dest.piece.color === Color.BLACK : false;
         }
         if (this._source) {
-            this._deltaX = this._source.coordinate.x - this._dest.coordinate.x; // deltaX will be positive when moving up the board and negative when moving down the board
-            this._deltaY = this._source.coordinate.y - this._dest.coordinate.y; // deltaY will be positive when moving left and negative when moving right
+            this._deltaX = this._source.coordinate.file - this._dest.coordinate.file; // deltaX will be positive when moving up the board and negative when moving down the board
+            this._deltaY = this._source.coordinate.rank - this._dest.coordinate.rank; // deltaY will be positive when moving left and negative when moving right
         }
 
-        dest.piece = source.piece;
-        source.piece = null;
+        // dest.piece = source.piece;
+        // source.piece = null;
     }
 
     protected _currentBoard: Tile[][];
@@ -44,7 +44,7 @@ export abstract class MoveValidator {
     protected abstract testCheckForPiece(myKingLoc: Tile, source: Tile): boolean;
 
     public isLegalMove(): boolean {
-        return this.isCorrectMovePattern();
+        return this.isNotFriendlyCollision() && this.isCorrectMovePattern();
     }
 
     private isNotFriendlyCollision(): boolean {

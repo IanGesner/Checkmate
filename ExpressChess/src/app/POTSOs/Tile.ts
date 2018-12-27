@@ -5,12 +5,12 @@ export class Tile {
 
     private readonly _color: Color;
     private readonly _coordinate: {
-        x: number;
-        y: number;
+        file: number;
+        rank: number;
     };
     private _piece: Piece;
 
-    constructor(color: Color, piece: Piece, coordinate?: {x: number, y: number}) {
+    constructor(color: Color, piece: Piece, coordinate?: {file: number, rank: number}) {
         this._color = color;
         this._piece = piece;
         this._coordinate = coordinate;
@@ -20,7 +20,7 @@ export class Tile {
         return this._color;
     }
 
-    public get coordinate(): {x: number; y: number;} {
+    public get coordinate(): {file: number; rank: number;} {
         return this._coordinate;
     }
    

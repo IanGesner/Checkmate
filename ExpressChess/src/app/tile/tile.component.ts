@@ -43,7 +43,7 @@ export class TileComponent implements OnInit {
     console.log('in onTileClicked()');
 
     if (this._gameService.selectedTile) {
-      console.log('moving piece to: ' + this._tile.coordinate.x + ' ' + this._tile.coordinate.x);
+      console.log('moving piece to: ' + this._tile.coordinate.file + ', ' + this._tile.coordinate.rank);
       this._gameService.movePiece(this._tile);
     }
     else if (this._tile.piece && this._tile.piece.color === this._gameService.ownedColor) {

@@ -11,77 +11,77 @@ export class GameService {
         this.turnCount = 0;
         this.board = [
             [
-                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.ROOK), { x: 0, y: 0 }),
-                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.KNIGHT), { x: 0, y: 1 }),
-                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.BISHOP), { x: 0, y: 2 }),
-                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.QUEEN), { x: 0, y: 3 }),
-                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.KING), { x: 0, y: 4 }),
-                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.BISHOP), { x: 0, y: 5 }),
-                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.KNIGHT), { x: 0, y: 6 }),
-                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.ROOK), { x: 0, y: 7 })],
+                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.ROOK), { rank: 0, file: 0 }),
+                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.KNIGHT), { rank: 0, file: 1 }),
+                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.BISHOP), { rank: 0, file: 2 }),
+                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.QUEEN), { rank: 0, file: 3 }),
+                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.KING), { rank: 0, file: 4 }),
+                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.BISHOP), { rank: 0, file: 5 }),
+                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.KNIGHT), { rank: 0, file: 6 }),
+                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.ROOK), { rank: 0, file: 7 })],
             [
-                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.PAWN), { x: 1, y: 0 }),
-                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.PAWN), { x: 1, y: 1 }),
-                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.PAWN), { x: 1, y: 2 }),
-                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.PAWN), { x: 1, y: 3 }),
-                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.PAWN), { x: 1, y: 4 }),
-                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.PAWN), { x: 1, y: 5 }),
-                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.PAWN), { x: 1, y: 6 }),
-                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.PAWN), { x: 1, y: 7 })],
+                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.PAWN), { rank: 1, file: 0 }),
+                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.PAWN), { rank: 1, file: 1 }),
+                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.PAWN), { rank: 1, file: 2 }),
+                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.PAWN), { rank: 1, file: 3 }),
+                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.PAWN), { rank: 1, file: 4 }),
+                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.PAWN), { rank: 1, file: 5 }),
+                new Tile(Color.BLACK, new Piece(Color.BLACK, Type.PAWN), { rank: 1, file: 6 }),
+                new Tile(Color.WHITE, new Piece(Color.BLACK, Type.PAWN), { rank: 1, file: 7 })],
             [
-                new Tile(Color.WHITE, null, { x: 2, y: 0 }),
-                new Tile(Color.BLACK, null, { x: 2, y: 1 }),
-                new Tile(Color.WHITE, null, { x: 2, y: 2 }),
-                new Tile(Color.BLACK, null, { x: 2, y: 3 }),
-                new Tile(Color.WHITE, null, { x: 2, y: 4 }),
-                new Tile(Color.BLACK, null, { x: 2, y: 5 }),
-                new Tile(Color.WHITE, null, { x: 2, y: 6 }),
-                new Tile(Color.BLACK, null, { x: 2, y: 7 }),],
+                new Tile(Color.WHITE, null, { rank: 2, file: 0 }),
+                new Tile(Color.BLACK, null, { rank: 2, file: 1 }),
+                new Tile(Color.WHITE, null, { rank: 2, file: 2 }),
+                new Tile(Color.BLACK, null, { rank: 2, file: 3 }),
+                new Tile(Color.WHITE, null, { rank: 2, file: 4 }),
+                new Tile(Color.BLACK, null, { rank: 2, file: 5 }),
+                new Tile(Color.WHITE, null, { rank: 2, file: 6 }),
+                new Tile(Color.BLACK, null, { rank: 2, file: 7 }),],
             [
-                new Tile(Color.BLACK, null, { x: 3, y: 0 }),
-                new Tile(Color.WHITE, null, { x: 3, y: 1 }),
-                new Tile(Color.BLACK, null, { x: 3, y: 2 }),
-                new Tile(Color.WHITE, null, { x: 3, y: 3 }),
-                new Tile(Color.BLACK, null, { x: 3, y: 4 }),
-                new Tile(Color.WHITE, null, { x: 3, y: 5 }),
-                new Tile(Color.BLACK, null, { x: 3, y: 6 }),
-                new Tile(Color.WHITE, null, { x: 3, y: 7 }),],
+                new Tile(Color.BLACK, null, { rank: 3, file: 0 }),
+                new Tile(Color.WHITE, null, { rank: 3, file: 1 }),
+                new Tile(Color.BLACK, null, { rank: 3, file: 2 }),
+                new Tile(Color.WHITE, null, { rank: 3, file: 3 }),
+                new Tile(Color.BLACK, null, { rank: 3, file: 4 }),
+                new Tile(Color.WHITE, null, { rank: 3, file: 5 }),
+                new Tile(Color.BLACK, null, { rank: 3, file: 6 }),
+                new Tile(Color.WHITE, null, { rank: 3, file: 7 }),],
             [
-                new Tile(Color.WHITE, null, { x: 4, y: 0 }),
-                new Tile(Color.BLACK, null, { x: 4, y: 1 }),
-                new Tile(Color.WHITE, null, { x: 4, y: 2 }),
-                new Tile(Color.BLACK, null, { x: 4, y: 3 }),
-                new Tile(Color.WHITE, null, { x: 4, y: 4 }),
-                new Tile(Color.BLACK, null, { x: 4, y: 5 }),
-                new Tile(Color.WHITE, null, { x: 4, y: 6 }),
-                new Tile(Color.BLACK, null, { x: 4, y: 7 }),],
+                new Tile(Color.WHITE, null, { rank: 4, file: 0 }),
+                new Tile(Color.BLACK, null, { rank: 4, file: 1 }),
+                new Tile(Color.WHITE, null, { rank: 4, file: 2 }),
+                new Tile(Color.BLACK, null, { rank: 4, file: 3 }),
+                new Tile(Color.WHITE, null, { rank: 4, file: 4 }),
+                new Tile(Color.BLACK, null, { rank: 4, file: 5 }),
+                new Tile(Color.WHITE, null, { rank: 4, file: 6 }),
+                new Tile(Color.BLACK, null, { rank: 4, file: 7 }),],
             [
-                new Tile(Color.BLACK, null, { x: 5, y: 0 }),
-                new Tile(Color.WHITE, null, { x: 5, y: 1 }),
-                new Tile(Color.BLACK, null, { x: 5, y: 2 }),
-                new Tile(Color.WHITE, null, { x: 5, y: 3 }),
-                new Tile(Color.BLACK, null, { x: 5, y: 4 }),
-                new Tile(Color.WHITE, null, { x: 5, y: 5 }),
-                new Tile(Color.BLACK, null, { x: 5, y: 6 }),
-                new Tile(Color.WHITE, null, { x: 5, y: 7 }),],
+                new Tile(Color.BLACK, null, { rank: 5, file: 0 }),
+                new Tile(Color.WHITE, null, { rank: 5, file: 1 }),
+                new Tile(Color.BLACK, null, { rank: 5, file: 2 }),
+                new Tile(Color.WHITE, null, { rank: 5, file: 3 }),
+                new Tile(Color.BLACK, null, { rank: 5, file: 4 }),
+                new Tile(Color.WHITE, null, { rank: 5, file: 5 }),
+                new Tile(Color.BLACK, null, { rank: 5, file: 6 }),
+                new Tile(Color.WHITE, null, { rank: 5, file: 7 }),],
             [
-                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.PAWN), { x: 6, y: 0 }),
-                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.PAWN), { x: 6, y: 1 }),
-                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.PAWN), { x: 6, y: 2 }),
-                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.PAWN), { x: 6, y: 3 }),
-                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.PAWN), { x: 6, y: 4 }),
-                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.PAWN), { x: 6, y: 5 }),
-                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.PAWN), { x: 6, y: 6 }),
-                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.PAWN), { x: 6, y: 7 })],
+                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.PAWN), { rank: 6, file: 0 }),
+                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.PAWN), { rank: 6, file: 1 }),
+                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.PAWN), { rank: 6, file: 2 }),
+                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.PAWN), { rank: 6, file: 3 }),
+                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.PAWN), { rank: 6, file: 4 }),
+                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.PAWN), { rank: 6, file: 5 }),
+                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.PAWN), { rank: 6, file: 6 }),
+                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.PAWN), { rank: 6, file: 7 })],
             [
-                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.ROOK), { x: 7, y: 0 }),
-                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.KNIGHT), { x: 7, y: 1 }),
-                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.BISHOP), { x: 7, y: 2 }),
-                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.QUEEN), { x: 7, y: 3 }),
-                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.KING), { x: 7, y: 4 }),
-                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.BISHOP), { x: 7, y: 5 }),
-                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.KNIGHT), { x: 7, y: 6 }),
-                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.ROOK), { x: 7, y: 7 })]
+                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.ROOK), { rank: 7, file: 0 }),
+                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.KNIGHT), { rank: 7, file: 1 }),
+                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.BISHOP), { rank: 7, file: 2 }),
+                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.QUEEN), { rank: 7, file: 3 }),
+                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.KING), { rank: 7, file: 4 }),
+                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.BISHOP), { rank: 7, file: 5 }),
+                new Tile(Color.BLACK, new Piece(Color.WHITE, Type.KNIGHT), { rank: 7, file: 6 }),
+                new Tile(Color.WHITE, new Piece(Color.WHITE, Type.ROOK), { rank: 7, file: 7 })]
         ]
     }
 
@@ -111,9 +111,13 @@ export class GameService {
 
     private _board: Tile[][];
     public get board(): Tile[][] {
-        return this._board.map(function (arr) {
+        let returnVal = this._board.map(function (arr) {
             return arr.slice();
-        });
+        }).reverse();
+
+        console.log(returnVal);
+
+        return returnVal;
     }
     public set board(value: Tile[][]) {
         this._board = value;
@@ -125,10 +129,12 @@ export class GameService {
         let validator = MoveValidatorFactory.create(this._selectedTile, dest, this._ownedColor, this.board);
 
         if (validator.isLegalMove()) {
-            this._board[dest.coordinate.x][dest.coordinate.y].piece = this._selectedTile.piece;
-            console.log('moving ' + this._selectedTile.coordinate.x + ', ' + this._selectedTile.coordinate.y + ' to ' + dest.coordinate.x + ', ' + dest.coordinate.y);
+            this._board[dest.coordinate.rank][dest.coordinate.file].piece = this._selectedTile.piece;
+            console.log('moving ' + this._selectedTile.coordinate.file + ', ' + this._selectedTile.coordinate.rank + ' to ' + dest.coordinate.file + ', ' + dest.coordinate.rank);
             this._selectedTile.piece = null;
             this._selectedTile = null;
+
+            //this._ownedColor = this._ownedColor == Color.WHITE ? Color.BLACK : Color.WHITE;
         }
         else {
             this._selectedTile = null;

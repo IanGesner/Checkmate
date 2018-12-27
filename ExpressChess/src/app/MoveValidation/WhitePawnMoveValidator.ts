@@ -10,10 +10,10 @@ export class WhitePawnMoveValidator extends PawnMoveValidator {
 
         if (this._ownedColor === Color.WHITE) { // Validate a pawn move when this client owns white
             if (this._deltaY > 0) { // Ensure white pawn is moving up the board 
-                if (this._deltaY === -1) {
+                if (this._deltaY === 1) {
                     if (this._deltaX === 0) // If pawn moves straight up one tile
                         return true;
-                    else if (this._deltaY === -1 || this._deltaY === 1 && this._pieceCollidesBlack) // If pawn is capturing white piece on diagonal
+                    else if (this._deltaX === -1 || this._deltaX === 1 && this._pieceCollidesBlack) // If pawn is capturing white piece on diagonal
                         return true;
                     // else if (this._source.coordinate.y === 4 && this._deltaX === 1 || this.) {
                     //     let leftTile: Tile = this._source.coordinate.x > 0 ? this._currentBoard[this._source.coordinate.x - 1][4] : null;
@@ -22,7 +22,7 @@ export class WhitePawnMoveValidator extends PawnMoveValidator {
                     //}   
                     // Need to check for capture en passant
                 }
-                else if (this._deltaX === 2 && this._deltaY === 0 && this._piece.moveCount === 0) { //If piece moves two tiles down on first move
+                else if (this._deltaY === 2 && this._deltaX === 0 && this._piece.moveCount === 0) { //If piece moves two tiles down on first move
                     return true;
                 }
             }
@@ -30,4 +30,9 @@ export class WhitePawnMoveValidator extends PawnMoveValidator {
             return false;
         }
     }
+
+    isPathClear(){ return true; }
+
+    testCheckForPiece(){return true;}
+
 }

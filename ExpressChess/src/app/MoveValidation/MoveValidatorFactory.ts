@@ -12,8 +12,7 @@ export class MoveValidatorFactory {
             case Type.PAWN: {
                 if (ownedColor === Color.WHITE)
                     return new WhitePawnMoveValidator(source, dest, ownedColor, board);
-                else
-                    return new PawnMoveValidator(source, dest, ownedColor, board);
+                
             }
 
         }

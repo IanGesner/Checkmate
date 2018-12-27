@@ -1,5 +1,5 @@
 <div>
-<ng-container *ngFor="let row of gameService.board; let i = index">
+<ng-container *ngFor="let row of gameService.board.reverse(); let i = index">
     <app-tile [_tile]="tile" *ngFor="let tile of gameService.board[i];"></app-tile>
 </ng-container>
 </div>
